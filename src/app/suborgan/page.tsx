@@ -5,18 +5,18 @@ import { H1, Medium_Text, Large_Text } from "@/app/components/general/Text";
 import Image from "next/image";
 
 const subOrganizations = [
-  { id: "1", name: "METIC", status: "Buka" },
-  { id: "2", name: "MEMO", status: "Tutup" },
-  { id: "3", name: "COMET", status: "Tutup" },
-  { id: "4", name: "MAC", status: "Tutup" },
-  { id: "5", name: "BDI", status: "Tutup" },
-  { id: "6", name: "Palwaga", status: "Tutup" },
-  { id: "7", name: "PMR", status: "Tutup" },
-  { id: "8", name: "Paskatema", status: "Tutup" },
-  { id: "9", name: "TSVC", status: "Tutup" },
-  { id: "10", name: "TSBC", status: "Tutup" },
-  { id: "11", name: "TSFC", status: "Tutup" },
-  { id: "12", name: "Pustel", status: "Tutup" },
+  { id: "1", name: "METIC", status: "Buka", logo: "/images/metic.png" },
+  { id: "2", name: "MEMO", status: "Tutup", logo: "/images/metic.png" },
+  { id: "3", name: "COMET", status: "Tutup", logo: "/images/metic.png" },
+  { id: "4", name: "MAC", status: "Tutup", logo: "/images/metic.png" },
+  { id: "5", name: "BDI", status: "Tutup", logo: "/images/metic.png" },
+  { id: "6", name: "Palwaga", status: "Tutup", logo: "/images/metic.png" },
+  { id: "7", name: "PMR", status: "Tutup", logo: "/images/metic.png" },
+  { id: "8", name: "Paskatema", status: "Tutup", logo: "/images/metic.png" },
+  { id: "9", name: "TSVC", status: "Tutup", logo: "/images/metic.png" },
+  { id: "10", name: "TSBC", status: "Tutup", logo: "/images/metic.png" },
+  { id: "11", name: "TSFC", status: "Tutup", logo: "/images/metic.png" },
+  { id: "12", name: "Pustel", status: "Tutup", logo: "/images/metic.png" },
 ];
 
 export default function SubOrganizationPage() {
@@ -40,7 +40,7 @@ export default function SubOrganizationPage() {
           >
             <div className="flex-shrink-0 mr-4">
               <Image
-                src="/images/metic.png" 
+                src={org.logo}
                 alt={`Logo ${org.name}`}
                 width={40}
                 height={40}

@@ -5,11 +5,15 @@ import Footer from "../components/general/Footer";
 
 const Page = () => {
   return (
-    <SectionsGap>
-      <Navbar/>
-      <VotePage />
-      <Footer/>
-    </SectionsGap>
+    <div>
+
+      <Navbar />
+      <SectionsGap>
+        <VotePage />
+      </SectionsGap>
+      <Footer />
+
+    </div>
   );
 };
 
