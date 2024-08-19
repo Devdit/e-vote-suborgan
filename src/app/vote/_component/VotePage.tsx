@@ -44,6 +44,25 @@ const candidates = [
       video_profile: "https://www.youtube.com/embed/dQw4w9WgXcQ"
     },
     candidates_number: "02"
+  },
+  {
+    id: "3",
+    candidate: {
+      id: "3",
+      name: "Santoso",
+      kandidat_kelas: "XI PG 2",
+      img: "/images/contoh_kandidat.jpg",
+      visi: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      misi: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      motto: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      pengalaman: [
+        { desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." },
+        { desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." }
+      ],
+      progja: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      video_profile: "https://www.youtube.com/embed/dQw4w9WgXcQ"
+    },
+    candidates_number: "3"
   }
 ];
 
@@ -81,7 +100,7 @@ export default function VotePage() {
   };
 
   return (
-    <div className="max-w-full w-full mx-auto grid grid-cols-1 xl:grid-cols-2 gap-6 mt-20 mb-20 px-8 min-h-[60vh]">
+    <div className="max-w-full w-full mx-auto grid grid-cols-1 xl:grid-cols-2 gap-6 mt-20 mb-20 min-h-[60vh]">
       {candidates.map((candidate) => (
         <div key={candidate.id} className={`relative mx-5 lg:mx-0 `}>
           <div className="max-w-full bg-white rounded-2xl z-20 mx-auto transition-all">
@@ -152,7 +171,7 @@ export default function VotePage() {
               {modal === candidate.id && (
                 <VoteModal onClose={() => setModal(null)}>
                   <div className="my-3">
-                    <Large_Text variant="BOLD" className="mb-2 text-center">
+                    <Large_Text variant="BOLD" className="mb-2 p-2 text-center">
                       Visi
                     </Large_Text>
                     <Medium_Text
@@ -253,165 +272,3 @@ export default function VotePage() {
     </div>
   );
 }
-
-// "use client";
-
-// import SectionsGap from "@/app/components/general/SectionsGap";
-// import Image from "next/image";
-// import React, { useState } from "react";
-// import { H1, H5, Large_Text, Medium_Text } from "@/app/components/general/Text";
-// import { FormButton } from "@/app/components/general/button";
-// import { ModalDialog, VoteModal } from "@/app/components/general/Modal";
-// import toast from "react-hot-toast";
-
-// export default function VotePage() {
-//   const [modal, setModal] = useState<string | null>(null);
-//   const [selected, setIsSelected] = useState<string[]>([]);
-//   const [dialouge, setDialouge] = useState(false);
-
-//   const maxVote = 1; // Set the maximum number of votes you want
-//   const candidates = [
-//     {
-//       id: "1",
-//       name: "Haza Nasrullah Kuswantoro",
-//       img: "/path-to-image/haza.jpg",
-//       visi: "Visi text here",
-//       misi: "Misi text here",
-//       motto: "Motto text here",
-//       pengalaman: [{ desc: "Pengalaman text here" }],
-//       progja: "Program Kerja text here",
-//     },
-//     {
-//       id: "2",
-//       name: "Naufal Nabil Ramadhan",
-//       img: "/path-to-image/naufal.jpg",
-//       visi: "Visi text here",
-//       misi: "Misi text here",
-//       motto: "Motto text here",
-//       pengalaman: [{ desc: "Pengalaman text here" }],
-//       progja: "Program Kerja text here",
-//     },
-//   ];
-
-//   const selectedCandidates = (candidateId: string) => {
-//     if (selected.length >= maxVote && !selected.includes(candidateId)) {
-//       return alert("Batas memilih adalah " + maxVote + " kandidat");
-//     }
-//     setIsSelected((prev) =>
-//       prev.includes(candidateId)
-//         ? prev.filter((candidate) => candidate !== candidateId)
-//         : [...prev, candidateId],
-//     );
-//   };
-
-//   const openDetailModal = (candidateId: string) => {
-//     setModal((prev) => (prev === candidateId ? null : candidateId));
-//   };
-
-//   const handleDialouge = () => {
-//     if (selected.length < maxVote) {
-//       return toast.error("Anda harus memilih " + maxVote + " kandidat");
-//     }
-//     setDialouge(!dialouge);
-//   };
-
-//   const handleSubmit = async () => {
-//     const loading = toast.loading("Loading...");
-//     // Simulate submission and sign out
-//     toast.success("Vote submitted successfully!", { id: loading });
-//   };
-
-//   return (
-//     <SectionsGap>
-//       <section className="max-w-full w-full mx-auto grid grid-cols-1 md:grid-cols-2 gap-4 mt-10 mb-10 px-4 min-h-[60vh]">
-//         {candidates.map((candidate) => (
-//           <div key={candidate.id} className="relative p-4 bg-white rounded-md shadow-md">
-//             <div className="flex flex-col items-center">
-//               <Image
-//                 src={candidate.img}
-//                 alt="Foto Kandidat"
-//                 className="mb-4 rounded-md"
-//                 width={150}
-//                 height={225}
-//               />
-//               <div className="text-center">
-//                 <H1 >{candidate.name}</H1>
-//                 <H5 >{candidate.progja}</H5>
-//                 <div className="mt-4 flex flex-col gap-2">
-//                   <FormButton
-//                     onClick={() => selectedCandidates(candidate.id)}
-//                     variant={selected.includes(candidate.id) ? "SECONDARY" : "PRIMARY"}
-//                     className="w-full text-[16px] font-[400]"
-//                   >
-//                     {selected.includes(candidate.id) ? "Batalkan Pilihan" : "Pilih Kandidat"}
-//                   </FormButton>
-//                   <FormButton
-//                     onClick={() => openDetailModal(candidate.id)}
-//                     variant="BLACK"
-//                     className="w-full text-[16px] font-[400]"
-//                   >
-//                     Lihat Detail
-//                   </FormButton>
-//                 </div>
-//               </div>
-//               {modal === candidate.id && (
-//                 <VoteModal onClose={() => setModal(null)}>
-//                   <div className="my-3">
-//                     <Large_Text variant="BOLD" className="mb-2 text-center text-[18px] font-[700]">Visi</Large_Text>
-//                     <Medium_Text variant="REGULAR" className="text-center my-3 bg-gray-200 py-2 rounded-md text-[18px] font-[700]">
-//                       {candidate.visi}
-//                     </Medium_Text>
-//                   </div>
-//                   <div className="my-3">
-//                     <Large_Text variant="BOLD" className="mb-2 text-center text-[18px] font-[700]">Misi</Large_Text>
-//                     <Medium_Text variant="REGULAR" className="text-center my-3 bg-gray-200 py-2 rounded-md text-[18px] font-[700]">
-//                       {candidate.misi}
-//                     </Medium_Text>
-//                   </div>
-//                   <div className="my-3">
-//                     <Large_Text variant="BOLD" className="mb-2 text-center text-[18px] font-[700]">Motto</Large_Text>
-//                     <Medium_Text variant="REGULAR" className="text-center my-3 bg-gray-200 py-2 rounded-md text-[18px] font-[700]">
-//                       {candidate.motto}
-//                     </Medium_Text>
-//                   </div>
-//                   <div className="my-3">
-//                     <Large_Text variant="BOLD" className="mb-2 text-center text-[18px] font-[700]">Pengalaman</Large_Text>
-//                     {candidate.pengalaman.map((exp, index) => (
-//                       <Medium_Text key={index} variant="REGULAR" className="text-center my-2 bg-gray-200 py-2 rounded-md text-[18px] font-[700]">
-//                         {exp.desc}
-//                       </Medium_Text>
-//                     ))}
-//                   </div>
-//                   <div className="my-3">
-//                     <Large_Text variant="BOLD" className="mb-2 text-center text-[18px] font-[700]">Program Kerja</Large_Text>
-//                     <Medium_Text variant="REGULAR" className="text-center my-3 bg-gray-200 py-2 rounded-md text-[18px] font-[700]">
-//                       {candidate.progja}
-//                     </Medium_Text>
-//                   </div>
-//                 </VoteModal>
-//               )}
-//             </div>
-//           </div>
-//         ))}
-//         {selected.length > 0 && (
-//           <div className="fixed bottom-6 right-6 z-50">
-//             <FormButton onClick={handleDialouge} variant="PRIMARY" className="text-[16px] font-[400]">
-//               Submit Pilihanmu
-//             </FormButton>
-//           </div>
-//         )}
-//         {dialouge && (
-//           <ModalDialog
-//             isOpen={dialouge}
-//             onClose={() => setDialouge(false)}
-//             handleSubmit={handleSubmit}
-//           >
-//             <div className="flex flex-col justify-center items-center">
-//               <Large_Text variant="BOLD" className="text-[18px] font-[700]">Apakah Anda yakin ingin mengirim suara?</Large_Text>
-//             </div>
-//           </ModalDialog>
-//         )}
-//       </section>
-//     </SectionsGap>
-//   );
-// }
