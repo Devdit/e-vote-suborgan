@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import LogoMPK from "@/../public/images/logoMPK.png";
-import Image from "next/image"; 
+import Image from "next/image";
 
 interface NavbarProps {
   title: string;
@@ -71,11 +71,10 @@ export default function Navbar() {
           data-aos="fade-down"
           data-aos-delay="500"
           data-aos-duration="500"
-          className={`fixed transition-transform bg-white duration-500 ${
-            isScrolled
+          className={`fixed transition-transform bg-white duration-500 ${isScrolled
               ? "top-8 w-[90%] 2xl:max-w-[1440px] xl:max-w-[1322px] lg:max-w-[1024px] sm:max-w-[480px] rounded-[64px] shadow-shadow-2 items-center py-4 px-8 right-10 left-10 place-self-center "
               : "max-w-full top-0 py-4 px-8 w-full left-10 right-10 place-self-center"
-          }`}
+            }`}
           style={{ transition: "all 0.8s ease-in-out" }}
         >
           <div className="flex items-center justify-between">
@@ -139,7 +138,7 @@ export default function Navbar() {
                 />
               </Link>
             </div>
-            <ul className="flex gap-[36px]">
+            <ul className="flex gap-[36px] items-center">
               {link.map((item, index) => (
                 <li
                   key={index}
@@ -148,6 +147,11 @@ export default function Navbar() {
                   <Link href={item.href}>{item.title}</Link>
                 </li>
               ))}
+              <li className="hidden xl:block">
+                <Link href="/login" className="bg-primary-color text-white px-7 py-3 rounded-full hover:bg-primary-color-dark transition duration-300 ease-in-out">
+                  Log In
+                </Link>
+              </li>
             </ul>
           </div>
         </nav>

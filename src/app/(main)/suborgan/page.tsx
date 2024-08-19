@@ -21,7 +21,7 @@ const subOrganizations = [
 
 export default function SubOrganizationPage() {
   return (
-    <div className="max-w-4xl mx-auto px-4 py-8">
+    <div className="max-w-4xl mx-auto px-4 py-8 mt-20 mb-20">
       <H1 className="text-center mb-2">
         Pilih Sub-Organisasi Yang Kamu Ikuti
       </H1>

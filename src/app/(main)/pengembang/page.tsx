@@ -9,7 +9,7 @@ export default function Pengembang() {
     <>
       <section className="w-full h-full min-h-screen">
         <SectionsGap>
-          <div className="mt-20">
+          <div className="mt-20 mb-20">
             <H1 className="text-center">Tim Kami</H1>
             <Large_Text variant="REGULAR" className="text-center">
               beberapa siswa yang ikut berkontribusi atau mengembangkan website

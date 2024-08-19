@@ -1,33 +1,30 @@
 import React from "react";
-import { H1, Large_Text } from "@/app/components/general/Text";
 import Image from "next/image";
-import NotFoundImage from "@/../public/images/NotFoundIcon.png";
+import DoubleVote from "@/../public/images/DoubleVoteIcon.png";
+import NotFoundIcon from "@/../public/images/NotFoundIcon.png";
+import { H1, Large_Text } from "@/app/components/general/Text";
 
-export default function NotFound() {
+export default function RejectedDoubleVote() {
   return (
-    <>
-      <div className="bg-red-light-6 w-full h-full max-h-screen">
-        <div className="flex items-center justify-center pt-[280px] pb-[173px]">
-          <div className="bg-white w-[1050px] h-[492px] rounded-[15px] text-center flex items-center shadow-md">
-            <div className="place-items-center absolute -top-4 left-1/2 -translate-x-1/2 pt-[120px]">
-              <Image
-                src={NotFoundImage}
-                alt="gambar not found"
-                className="w-[410px] h-[314px] "
-              />
-            </div>
-            <div>
-              <H1>Oops.. Halaman Yang Kamu Kunjungi Tidak Ada</H1>
-              <Large_Text
-                variant="REGULAR"
-                className="text-secondary-text-color mt-[18px]"
-              >
-                Halaman yang kamu cari tidak ditemukan atau sudah dihapus
-              </Large_Text>
-            </div>
-          </div>
+    <div className="bg-red-light-6 w-full h-screen flex items-center justify-center py-10">
+      <div className="bg-white w-full max-w-[1050px] mx-4 h-auto rounded-[15px] flex flex-col items-center text-center shadow-md p-4">
+        <div className="w-full flex justify-center -mt-16 md:-mt-0">
+          <Image
+            src={NotFoundIcon}
+            alt="gambar not found"
+            className="w-[150px] h-[150px] md:w-[328px] md:h-[314px]"
+          />
+        </div>
+        <div className="w-full mt-10 md:mx-[85px]">
+          <H1>Oops.. Halaman Yang Kamu Kunjungi Tidak Ada</H1>
+          <Large_Text
+            variant="REGULAR"
+            className="text-secondary-text-color mt-[18px]"
+          >
+            Silahkan kembali ke beranda, untuk mengakses halaman yang lainnya
+          </Large_Text>
         </div>
       </div>
-    </>
+    </div>
   );
 }

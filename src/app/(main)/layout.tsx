@@ -1,3 +1,6 @@
+import Footer from "../components/general/Footer";
+import Navbar from "../components/general/Navbar";
+
 export default function MainLayout({
   children,
 }: Readonly<{
@@ -5,10 +8,12 @@ export default function MainLayout({
 }>) {
   return (
     <>
-      {/* <div className="w-full h-[20px] xl:h-0 bg-neutral-500"></div> */}
-      {/* <main className="mt-[58px] xl:mt-[88px] overflow-hidden bg-red-light-6">{children}</main> */}
+
       
-      <main className="overflow-hidden bg-red-light-6">{children}</main>
+      <main className="overflow-hidden bg-red-light-6">
+      <Navbar/>
+        {children}</main>
+        <Footer/>
 
     </>
   );
