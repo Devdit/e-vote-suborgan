@@ -85,6 +85,13 @@ export const authOptions: AuthOptions = {
 		signIn: "/login",
 	},
 	callbacks: {
+		async redirect({ url, baseUrl }) {
+			const redirectUrl = url.startsWith("/")
+				? new URL(url, baseUrl).toString()
+				: url;
+			return redirectUrl;
+		},
+
 		async signIn({ user, profile, account }) {
 			if (
 				account?.provider == "google" &&
