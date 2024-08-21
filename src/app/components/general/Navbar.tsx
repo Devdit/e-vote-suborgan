@@ -63,7 +63,15 @@ export default function Navbar() {
 		{ title: "Prosedur", href: "/#prosedur" },
 		{ title: "Galeri", href: "/#galeri" },
 		{ title: "Video", href: "/#video" },
-		{ title: "Vote", href: "/vote" },
+		session && session?.user?.role === "admin"
+			? {
+					title: "Admin Panel",
+					href: "/admin",
+			  }
+			: {
+					title: "Vote",
+					href: "/vote",
+			  },
 		{ title: "Pengembang", href: "/pengembang" },
 	];
 

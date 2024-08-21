@@ -1,12 +1,18 @@
 "use client";
 
 import React from "react";
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
+import { redirect } from "next/navigation";
+
 import { H2, Large_Text } from "@/app/components/general/Text";
 import { FormButton } from "@/app/components/general/button";
 import Navbar from "../components/general/Navbar";
 
 export default function LoginPage() {
+	const { status } = useSession();
+
+	if (status === "authenticated") return redirect("/");
+
 	return (
 		<main className="min-h-screen flex flex-col">
 			<Navbar />
@@ -23,7 +29,9 @@ export default function LoginPage() {
 						sekolah ya teman-teman.
 					</Large_Text>
 					<FormButton
-						onClick={() => signIn("google")}
+						onClick={() =>
+							signIn("google", { callbackUrl: "/vote", redirect: false })
+						}
 						variant="PRIMARY"
 						className="flex items-center gap-x-4 w-full justify-center group bg-[#C1121F] text-white py-3 rounded-full"
 					>

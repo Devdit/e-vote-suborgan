@@ -10,9 +10,7 @@ import { H1, Large_Text } from "@/app/components/general/Text";
 export default function RejectedDoubleVote() {
 	useEffect(() => {
 		const timer = setTimeout(() => {
-			console.log("Auto log out dilakukan");
-			signOut({ callbackUrl: "/", redirect: true });
-			window.location.href = "/";
+			signOut({ callbackUrl: "/login", redirect: false });
 		}, 5000);
 
 		return () => clearTimeout(timer);
