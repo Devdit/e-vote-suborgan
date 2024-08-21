@@ -34,8 +34,8 @@ model User {
   name                String
   role                UserRole
   angkatan            String?
-  suborgan_id         String
-  suborgan            Suborgan              @relation(fields: [suborgan_id], references: [id])
+  suborgan_id         String?
+  suborgan            Suborgan?             @relation(fields: [suborgan_id], references: [id])
   User_Vote           User_Vote[]
   Vote_Session_Access Vote_Session_Access[]
 }
