@@ -1,5 +1,5 @@
 "use server";
-
+import { revalidatePath } from "next/cache";
 import { createCandidate, updateCandidate } from "../database/candidates.query";
 
 export const handleCreateCandidate = async (formData: FormData) => {
@@ -19,6 +19,7 @@ export const handleCreateCandidate = async (formData: FormData) => {
 	};
 
 	await createCandidate(candidateData);
+	revalidatePath("/", "layout");
 };
 
 export const handleUpdateCandidate = async (id: string, formData: FormData) => {
@@ -38,4 +39,5 @@ export const handleUpdateCandidate = async (id: string, formData: FormData) => {
 	};
 
 	await updateCandidate({ id }, candidateData);
+	revalidatePath("/", "layout");
 };
