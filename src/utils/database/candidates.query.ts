@@ -3,8 +3,13 @@
 import prisma from "@/lib/prisma";
 import { Prisma } from "@prisma/client";
 
-export const findAllCandidates = async () => {
-	return await prisma.candidates.findMany();
+export const findAllCandidates = async (
+	filter?: Prisma.CandidatesWhereInput
+) => {
+	return await prisma.candidates.findMany({
+		where: filter,
+		include: { Pengalaman: true },
+	});
 };
 
 export const findCandidates = async (
