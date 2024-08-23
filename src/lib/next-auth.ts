@@ -7,6 +7,7 @@ import { UserRole } from "@prisma/client";
 
 import { createUser, findUser } from "@/utils/database/user.query";
 import { compareHash } from "@/utils/encrypt";
+import { stringify } from "querystring";
 
 declare module "next-auth" {
 	/**
@@ -102,9 +103,16 @@ export const authOptions: AuthOptions = {
 			if (user.email) {
 				const userdb = await findUser({ email: user.email });
 				if (!userdb) {
+					const extractAngkatanFromEmail = (email: string): string | null => {
+						const match = email.match(/_(\d+)[a-z]*@/);
+						return match ? match[1] : null;
+					};
+
+					const angkatan = extractAngkatanFromEmail(user.email);
 					await createUser({
 						email: user.email,
 						name: user.name || "",
+						angkatan: angkatan ? angkatan : undefined,
 						role: "student",
 					});
 				}
