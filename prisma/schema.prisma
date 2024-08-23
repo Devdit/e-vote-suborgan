@@ -47,14 +47,21 @@ model Candidates {
   kelas                  String
   visi                   String                   @db.Text
   misi                   String                   @db.Text
-  pengalaman             String                   @db.Text
-  moto                   String                   @db.Text
+  motto                  String                   @db.Text
   progja                 String                   @db.Text
   video_profil           String
   suborgan_id            String
   suborgan               Suborgan                 @relation(fields: [suborgan_id], references: [id])
   Vote_Session_Candidate Vote_Session_Candidate[]
   User_Vote              User_Vote[]
+  Pengalaman             Pengalaman[]
+}
+
+model Pengalaman {
+  id           String     @id @default(uuid())
+  description  String
+  candidate_id String
+  canditates   Candidates @relation(fields: [candidate_id], references: [id])
 }
 
 model Vote_Session {
@@ -62,7 +69,7 @@ model Vote_Session {
   title                  String
   openedAt               DateTime
   closedAt               DateTime
-  isPublic               Boolean
+  isPublic               Boolean                  @default(false)
   max_vote               Int
   suborgan_id            String
   suborgan               Suborgan                 @relation(fields: [suborgan_id], references: [id])
