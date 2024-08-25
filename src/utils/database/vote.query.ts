@@ -9,6 +9,32 @@ export const createVoteSession = async (
 	return await prisma.vote_Session.create({ data });
 };
 
+export const userVote = async (
+	vote_session_id: string,
+	user_id: string,
+	candidate_id: string
+) => {
+	return await prisma.user_Vote.create({
+		data: {
+			vote_session_id,
+			user_id,
+			candidate_id,
+		},
+	});
+};
+
+export const hasUserVoted = async (
+	vote_session_id: string,
+	user_id: string
+) => {
+	return await prisma.user_Vote.findFirst({
+		where: {
+			vote_session_id,
+			user_id,
+		},
+	});
+};
+
 export const findVoteSession = async (
 	where: Prisma.Vote_SessionWhereUniqueInput
 ) => {

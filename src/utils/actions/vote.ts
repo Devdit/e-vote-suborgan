@@ -4,14 +4,21 @@ import {
 	createVoteUserAccess,
 	findVoteSession,
 	createVoteSession,
+	userVote,
+	hasUserVoted,
 } from "../database/vote.query";
 import { findSuborgan } from "../database/suborgan.query";
 import { findManyUser } from "../database/user.query";
 
 export const handleUserVote = async (
 	vote_session_id: string,
+	candidate_id: string,
 	id_user: string
-) => {};
+) => {
+	const userHasVoted = await hasUserVoted(vote_session_id, id_user);
+	if (userHasVoted) return { success: false, message: "this user has voted" };
+	await userVote(vote_session_id, id_user, candidate_id);
+};
 
 export const handleCreateVoteSession = async (formData: FormData) => {
 	const title = formData.get("title") as string;
