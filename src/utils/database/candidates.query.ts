@@ -12,6 +12,18 @@ export const findAllCandidates = async (
 	});
 };
 
+export const findAllCandidatesByVoteSession = async (voteSessionId: string) => {
+	return await prisma.candidates.findMany({
+		where: {
+			Vote_Session_Candidate: {
+				some: {
+					vote_session_id: voteSessionId,
+				},
+			},
+		},
+		include: { Pengalaman: true },
+	});
+};
 export const findCandidates = async (
 	where: Prisma.CandidatesWhereUniqueInput
 ) => {
