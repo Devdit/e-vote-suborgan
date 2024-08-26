@@ -31,7 +31,7 @@ CREATE TABLE `Candidates` (
     `visi` TEXT NOT NULL,
     `misi` TEXT NOT NULL,
     `pengalaman` TEXT NOT NULL,
-    `moto` TEXT NOT NULL,
+    `motto` TEXT NOT NULL,
     `progja` TEXT NOT NULL,
     `video_profil` VARCHAR(191) NOT NULL,
     `suborgan_id` VARCHAR(191) NOT NULL,

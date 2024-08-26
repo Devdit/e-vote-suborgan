@@ -19,6 +19,8 @@ declare module "next-auth" {
 			email: string;
 			name: string;
 			role: UserRole;
+			angkatan: string | null;
+			suborgan_id: string | null;
 		} & DefaultSession["user"];
 	}
 }
@@ -30,6 +32,8 @@ declare module "next-auth/jwt" {
 		email: string;
 		name: string;
 		role: UserRole;
+		angkatan: string | null;
+		suborgan_id: string | null;
 	}
 }
 
@@ -129,6 +133,7 @@ export const authOptions: AuthOptions = {
 				token.email = userdb.email;
 				token.name = userdb.name;
 				token.role = userdb.role;
+				token.angkatan = userdb.angkatan;
 			}
 			return token;
 		},

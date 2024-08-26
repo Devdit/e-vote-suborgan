@@ -18,8 +18,9 @@ export default withAuth(function middleware(req) {
 	}
 
 	if (
-		nextauth.token?.role === "student" &&
-		nextUrl.pathname.startsWith("/vote")
+		nextauth.token?.role !== "student" &&
+		(nextUrl.pathname.startsWith("/vote") ||
+			nextUrl.pathname.startsWith("/aftervote"))
 	) {
 		return NextResponse.rewrite(new URL("/accesdenied", req.url), {
 			status: 403,
